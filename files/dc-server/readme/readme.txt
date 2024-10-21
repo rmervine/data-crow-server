@@ -6,12 +6,12 @@
 
 Created by Robert Jan van der Waals
 
-Contact me at info@datacrow.net
-Find me at http://www.datacrow.net
-           http://sourceforge.net/projects/datacrow
+Contact me at info@datacrow.org
+Find me at https://datacrow.org
+           https://sourceforge.net/projects/datacrow
 
 
-----------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------
 Table of Content
 
  1.0 ------- Introduction
@@ -24,25 +24,25 @@ Table of Content
  8.0 ------- Licenses and 3rd party software
 
 
-----------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------
 1.0 Introduction
 
 Data Crow is an application to register Software, Images, Music Files, Audio CDs, 
 Books and Movies. The registration is automated as far as possible. To achieve 
 this, an internet connection is needed as Data Crow uses web services 
-(like amazon.com, imdb.com and freedb.org) to retrieve information about a piece 
-of software, an audio CD or a movie. Further more, files are parsed to retrieve 
-useful information. 
+to retrieve information about a piece of software, an audio CD or a movie. Further more, 
+files are parsed to retrieve useful information. 
 
 Features:
 
-* Internal help system (F1).
+* A great help system (F1) - linked to the various screens and functions in Data Crow but
+  also accessible from here: https://datacrow.org/docs
 * Skinnable, nice looking and easy to use UI.
 * You can customize almost everything; design your own item form, quick view, hide fields
   and module which you are not using and create your own reports (XSLT scripts).  
 * Platform independent and completely portable (run from an USB stick).
 * Loan administration. Keep track of your loans.
-* Application Server (separate download).
+* Web and Application Server (separate download).
 * Create your own collection modules and/or modify existing collection modules.
 * Advanced user configuration (access rights + module and field access).
 * Rename your files based on the information of Data Crow.
@@ -50,77 +50,69 @@ Features:
   one, rename any text within the application, set the fonts, ..
 * Reporting (PDF, HTML, Text and XML).
 * Registration of Software, Audio CDs and Music Files, Books, Movies and Images.
-* Search for items using online services such as Amazon.com (http://www.amazon.com), 
-  Imdb (http://www.imdb.com), Musicbrainz (http://musicbrainz.org) and many others.
-* Extract information from files on your CD, DVD or Harddisk:
+* Search for items using online services.
+* Extract information from files on your CD, DVD or hard disk:
   image files (JPG, GIF, PNG, SVG), music files (technical info and tag content of 
-  ASF, OGG, APE, FLAC and MP3 files) and movie file (DivX, Xvid, ASF, MKV, OGM, 
+  ASF, OGG, APE, FLAC and MP3 files) and movie file (MP4, DivX, Xvid, ASF, MKV, OGM, 
   RIFF, MOV, IFO, VOB and Mpeg video).
 * Internal HSQL database + SQL query tool for expert users.
 
 Data Crow does not write information to the registry or any other platform specific 
 folder or structure. All the information is kept within the Data Crow installation 
 folder. It does not obey platform specific rules and can run on any platform 
-(Windows, Linux and others) having Java 1.6 (from Oracle) or higher installed. 
+(Windows, Linux and others) having Java Second Edition version 11 (from Oracle or 
+OpenJDK) or higher installed. 
 
 
-----------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------
 2.0 Requirements
 
+Data Crow needs Java;
+Java Second Edition 11 (or higher) from Oracle (https://java.com/)
+  
 Data Crow was tested on:
-Windows XP, Windows 7 and Ubuntu (latest version at the moment of testing).
-Systems used: Core 2 Duo 2.2ghz
+Windows 11 and Ubuntu (latest version at the moment of testing).
+Systems used: Intel(R) Core(TM) i7-8750H CPU @ 2.20GHz / 8GB of RAM
 
 Minimum requirement: 
 An 1.0 Ghz system is perfectly capable of running Data Crow.
 Data Crow needs, for large collections, at least 256 MB of free memory.
 (a collection of 10,000 items or more is considered large).
 
-Data Crow needs Java:
-  * JRE 1.7 (or higher) from Oracle (http://java.com/)
 
-
-----------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------
 3.0 About the database (HSQL)
 
 Data Crow uses the HSQL database engine. It's powerful, fast and can run on
-any system. Look at http://http://hsqldb.org/ for more information
+any system. Look at https://hsqldb.org for more information
 
 By default a database with the name "dc" is used. You can use a different database by 
 using the parameters. See chapter 6.0 for more information.
 
 
-----------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------
 4.0 Upgrading
 
 1) Create a backup of your data in the old version using the Backup & Restore utility
 2) Install the new version on top of the existing version.
 
 
-----------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------
 5.0 Building the project
 
-Use Apache Ant (see http://jakarta.apache.org/) to build this project. Ant will you use
-the build.xml file to compile the full Data Crow project.
+Use Maven to build this project. From the root folder (Modules/) type mvn clean install
+and all the modules will be build. To create the various installers and zip files run
+mvn clean package from the Modules/datacrow-install folder. Note that for the latter
+you do require a valid certificate in order to sign the executables for Windows.
+These are naturally not provided with this library as they are essential to the 
+integrity of the official software packages.
 
 
-----------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------
 6.0 Starting Data Crow
 
-Data Crow can be started by typing "java -Xmx256m -jar datacrow.jar". 
-On Windows platforms the datacrow32bit.exe or datacrow64bit.exe file can be used to start.
-
-    -datacrow32bit.exe: can only be used in case the 32 bit version of Java has been 
-     installed.
-
-    -datacrow64bit.exe: can only be used in case the 64 bit version of Java has been 
-     installed. It could be that you have a 64bit operating system while having 
-     a 32bit version of Java installed. In this case the datacrow64bit.exe will
-     fail to start.
-     
-If Data Crow fails to start try and run it "as administrator":
-    -Right-click the EXE file or the shortcut (as created by the installer), select the
-     properties tab and tick the option called "Run as administrator".
+The installer will create shortcuts for your convenience. Alternatively, Data Crow can 
+be started by typing "java -jar datacrow-client-<version>.jar". 
 
 If you use multiple Data Crow installations you have several choices to make:
 
@@ -161,41 +153,33 @@ The various parameters you can use are listed below:
     -credentials:username/password
      Specify the login credentials to start Data Crow without displaying the login dialog.
      
-    -nosplash
-     Hides the splashscreen on startup.
-     
     -debug
      For additional logging information.     
-     
-    -clearsettings
-     Loads the default Data Crow settings. Disgards all user settings.
-     
 
-----------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------
 7.0 Credits
 
 This application would not have succeeded (or even existed) without the help of:
 
-* HSQL: This product includes Hypersonic SQL.
-  Originally developed by Thomas Mueller and the Hypersonic SQL Group. 
-  I want to thank Thomas Mueller for providing this application with an easy
-  to use, powerful but small and platform independent database.
-  http://hsqldb.sourceforge.net/
-* http://www.freedb.org for allowing me to retrieve data from their web servers.
-* http://musicbrainz.org for allowing me to retrieve Music Albums.
-* Amazon.com for allowing me to retrieve data from their web servers.
-  http://www.amazon.com
-* Imdb.com for allowing me to extract data from their database.
-  http://www.imdb.com
-* JAudioTagger which I use to parse audio file information.
-  http://www.jthink.net/jaudiotagger
+* Ariel Chyłek for his persistence and assistance of users. Even when Data Crow was as
+  good as abandoned he hang in there and advised and helped the users of Data Crow.
+  Oh, and also the Polish language is always up to date because of this legend;
+  hats of to you sir! 
+* Ingo / iro-de for supplying the German translation, helping out with testing and 
+  making recommendations to improve the product.
+* Flag-Courier (sourceforge.net user) and Tostis (also a sourceforge.net user)
+  for updating the build process and maintaining the code when Data Crow was abandoned.
+* https://sourceforge.net for hosting Data Crow.
+* The creators of the many, many 3rd party libraries use by Data Crow, such as:
+  Apache Tika, HSQL DB, Jetty, JTattoo, jAudiotagger, Liferay MP4Parser, Bouncy Castle,
+  Jacksum, jSoup, Gson (Google), Jasper Reports, ImageIO (Twelve Monkeys), Apache Batik, 
+  Apache Log4j2.
 * izPack for providing a smooth way to install Data Crow on multiple platforms.
-  http://www.izforge.com/izpack/
-* ISBNExtractor. Extracts ISBNs from PDF documents.
-  http://isbnextractor.sourceforge.net.   
+  http://izpack.org
 
 
-----------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------
 8.0 License
 
 This program is free software: you can redistribute it and/or modify it under the terms 
